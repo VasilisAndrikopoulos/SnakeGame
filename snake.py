@@ -17,8 +17,13 @@ def score(scr):
     dis.blit(value, [0, 0])
 
 def snake_body(snake_block, snake_list):
+    counter = 0
     for x in snake_list:
-        pygame.draw.rect(dis, black, [x[0], x[1], snake_block, snake_block])
+        if counter % 2 == 0:
+          pygame.draw.rect(dis, green, [x[0], x[1], snake_block, snake_block])
+        else:
+          pygame.draw.rect(dis, black, [x[0], x[1], snake_block, snake_block])
+        counter += 1
 
 def message(msg, color):
     mesg = font_style.render(msg, True, color)
@@ -90,7 +95,7 @@ def gameLoop():
                 ver = dis_height
 
         dis.fill(blue)    
-        pygame.draw.rect(dis, green, [food_hor, food_ver, snake_block, snake_block])
+        pygame.draw.rect(dis, red, [food_hor, food_ver, snake_block, snake_block])
         snake_head = []
         snake_head.append(hor)
         snake_head.append(ver)
